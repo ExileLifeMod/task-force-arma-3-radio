@@ -176,22 +176,24 @@ public:
 class PersonalRadioEffect : public SimpleRadioEffect {
 public:
     PersonalRadioEffect() {
-        filterSpeakerHP.setup(SAMPLE_RATE, 520, 0.97);
-        filterSpeakerLP.setup(SAMPLE_RATE, 4300, 2.0);
+        //filterSpeakerHP.setup(SAMPLE_RATE, 520, 0.97);
+        //filterSpeakerLP.setup(SAMPLE_RATE, 4300, 2.0);
+        filterSpeakerHP.setup(SAMPLE_RATE, 900, 0.85);
+        filterSpeakerLP.setup(SAMPLE_RATE, 3000, 2.0);
 
-        filterMicHP.setup(SAMPLE_RATE, 900, 0.85);
-        filterMicLP.setup(SAMPLE_RATE, 3000, 2.0);
+        //filterMicHP.setup(SAMPLE_RATE, 900, 0.85);
+        //filterMicLP.setup(SAMPLE_RATE, 3000, 2.0);
     }
 
     virtual void process(float* buffer, int samplesNumber) {
-        processFilter(filterMicHP, buffer, samplesNumber);
-        processFilter(filterMicLP, buffer, samplesNumber);
+        //processFilter(filterMicHP, buffer, samplesNumber);
+        //processFilter(filterMicLP, buffer, samplesNumber);
         SimpleRadioEffect::process(buffer, samplesNumber);
     }
 
 private:
-    Dsp::SimpleFilter<Dsp::RBJ::HighPass, 1> filterMicHP;
-    Dsp::SimpleFilter<Dsp::RBJ::LowPass, 1> filterMicLP;
+    //Dsp::SimpleFilter<Dsp::RBJ::HighPass, 1> filterMicHP;
+    //Dsp::SimpleFilter<Dsp::RBJ::LowPass, 1> filterMicLP;
 };
 
 template<class T>
