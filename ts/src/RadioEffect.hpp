@@ -88,8 +88,8 @@ public:
         double x = avg / base;
 
 
-        for (int q = 0; q < samplesNumber; q++) buffer[q] = delay(buffer[q]);
-        for (int q = 0; q < samplesNumber; q++) buffer[q] = ringmodulation(buffer[q], errorLevel);
+        //for (int q = 0; q < samplesNumber; q++) buffer[q] = delay(buffer[q]);
+        //for (int q = 0; q < samplesNumber; q++) buffer[q] = ringmodulation(buffer[q], errorLevel);
         //#FIXME reenable
         //for (int q = 0; q < samplesNumber; q++) buffer[q] = foldback(buffer[q], (float) (0.3f * (1.0f - errorLevel) * x));
 
