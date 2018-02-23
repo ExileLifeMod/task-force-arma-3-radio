@@ -22,11 +22,8 @@ public:
 
     float delay(float input) {
         delayLine[delayPosition] = input;
-        int position = (delayPosition + 1) % DELAY_SAMPLES;
-        float value = delayLine[position];
-        delayPosition++;
-        if (delayPosition >= DELAY_SAMPLES) delayPosition = 0;
-        return value;
+        delayPosition = (delayPosition + 1) % DELAY_SAMPLES;
+        return delayLine[delayPosition];
     }
 
     template<class T>
