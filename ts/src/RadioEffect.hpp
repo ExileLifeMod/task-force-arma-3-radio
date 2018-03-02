@@ -122,15 +122,14 @@ protected:
     0.9	0.995000005
     1.0	0.997799993*/
     static float calcErrorLevel(float errorLevel) {
-        double levels[] = { 0.0, 0.150000006, 0.300000012, 0.600000024, 0.899999976, 0.950000048, 0.960000038, 0.970000029, 0.980000019, 0.995000005, 0.997799993, 0.998799993, 0.999 };
+        static const std::array<float,13> levels{ 0.0, 0.150000006, 0.300000012, 0.600000024, 0.899999976, 0.950000048, 0.960000038, 0.970000029, 0.980000019, 0.995000005, 0.997799993, 0.998799993, 0.999 };
 
-        int part = (int) (errorLevel * 10.0);
-        part = std::clamp(part, 0, 12);
-        double from = levels[part];
-        double to = levels[part + 1];
+        const auto part = std::clamp(static_cast<size_t>(errorLevel * 10.f), size_t{0}, levels.size()-2);
+        const auto from = levels[part];
+        const auto to = levels[part + 1];
 
-        double result = from + (from - to) * (errorLevel - part / 10.0);
-        return static_cast<float>(result);
+        const auto result = from + (to - from) * (errorLevel - part / 10.f);
+        return result;  
     }
 
 
